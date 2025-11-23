@@ -4,6 +4,8 @@ import '../../main.dart';
 import '../../core/database/database.dart';
 import '../camera/camera_screen.dart';
 import '../review/review_screen.dart';
+import '../analytics/analytics_screen.dart';
+import '../chatbot/chat_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -38,22 +40,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
-            label: 'UPI',
+            label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.restaurant_outlined),
-            selectedIcon: Icon(Icons.restaurant),
-            label: 'Card',
+            icon: Icon(Icons.analytics_outlined),
+            selectedIcon: Icon(Icons.analytics),
+            label: 'Analytics',
           ),
           NavigationDestination(
             icon: Icon(Icons.chat_outlined),
             selectedIcon: Icon(Icons.chat),
-            label: 'Account',
+            label: 'Coach',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outlined),
             selectedIcon: Icon(Icons.person),
-            label: 'Rewards',
+            label: 'Profile',
           ),
         ],
       ),
@@ -386,7 +388,7 @@ class JournalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Journal Page - Coming Soon'));
+    return const AnalyticsScreen();
   }
 }
 
@@ -395,7 +397,7 @@ class CoachPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('AI Coach Page - Coming Soon'));
+    return const ChatScreen();
   }
 }
 

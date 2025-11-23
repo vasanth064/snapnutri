@@ -52,13 +52,47 @@ AI-powered calorie tracking app for Android using Gemini 1.5 Flash and Material 
    - Pending review notifications
    - Material You card-based layout
 
-#### 🚧 To Be Implemented
-1. Camera Capture Screen
-2. Background Processing Service
-3. Review Screen with Slider
-4. Analytics Dashboard
-5. RAG-Powered Chatbot
-6. Notification System
+8. **Camera Capture Screen** (lib/features/camera/)
+   - Instant camera launch with "Fire and Forget" workflow
+   - Image compression (1920px max, 85% JPEG quality)
+   - Gallery picker integration
+   - Background queue integration
+
+9. **Background Processing Service** (lib/services/background_processor.dart)
+   - WorkManager integration for resilient background tasks
+   - Rate limiting with exponential backoff
+   - Automatic daily summary updates
+   - Periodic hourly checks for pending items
+
+10. **Review Screen** (lib/features/review/)
+    - Slider-based portion control (50%-150%)
+    - Live calorie/macro updates
+    - Forced review mechanism blocks dashboard until approved
+    - Multi-entry review queue
+
+11. **Notification System** (lib/services/notification_service.dart)
+    - "Food analyzed. Tap to review" notifications
+    - Low confidence warnings
+    - Analysis failure alerts
+    - Nutrient deficiency notifications
+
+12. **Analytics Dashboard** (lib/features/analytics/)
+    - Macro pie chart (protein, carbs, fat)
+    - Micronutrient traffic lights (🟢🟡🔴)
+    - Weekly deficiency detection
+    - Visual nutrient status indicators
+
+13. **RAG-Powered Chatbot** (lib/features/chatbot/)
+    - Context-aware AI coach
+    - Queries local database for personalized advice
+    - Chat history persistence
+    - Real-time nutritional guidance
+
+14. **Deficiency Detection Service** (lib/services/deficiency_detector.dart)
+    - Weekly analysis vs RDA
+    - 3-level severity system (critical, moderate, mild)
+    - Personalized recommendations
+    - Actionable health tips
 
 ## Tech Stack
 
