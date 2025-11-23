@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../main.dart';
 import '../../core/database/database.dart';
+import '../camera/camera_screen.dart';
+import '../review/review_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -168,14 +170,17 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   IconButton(
                     icon: const Icon(Icons.notifications_outlined),
-                    onPressed: () {
+                    onPressed: () async {
                       // Navigate to review screen if pending
                       if (_pendingCount > 0) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Review screen coming soon!'),
+                        final result = await Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ReviewScreen(),
                           ),
                         );
+                        if (result == true && mounted) {
+                          await _loadData();
+                        }
                       }
                     },
                   ),
@@ -242,14 +247,15 @@ class _HomePageState extends ConsumerState<HomePage> {
                               children: [
                                 Expanded(
                                   child: OutlinedButton.icon(
-                                    onPressed: () {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text(
-                                              'Camera screen coming soon!'),
+                                    onPressed: () async {
+                                      final result = await Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => const CameraScreen(),
                                         ),
                                       );
+                                      if (result == true && mounted) {
+                                        await _loadData();
+                                      }
                                     },
                                     icon: const Icon(Icons.camera_alt),
                                     label: const Text('Capture'),
